@@ -1,0 +1,38 @@
+objectvar save_window_, rvp_
+objectvar scene_vector_[13]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,510,0.001,0.024)
+scene_vector_[11] = save_window_
+{save_window_.view(0, 0.001, 510, 0.023, 992, 205, 300.6, 200.8)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addexpr("somaA.CaBuffer_ca_soma[0]( 0.5 )", 1, 1, 0.180239, .70928, 2)
+save_window_.addexpr("somaA.Buffer_ca_soma[0]( 0.5 )", 1, 1, 0.177245, .85687, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,510,4e-05,0.0007)
+scene_vector_[10] = save_window_
+{save_window_.view(0, 4e-05, 510, 0.00066, 901, 367, 300.6, 200.8)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("somaA.ca_ca_soma[0]( 0.5 )", 1, 1, 0.380838, 0.949303, 2)
+save_window_.addvar("somaA.ca_ca_soma[24]( 0.5 )", 1, 1, 0.395808, 0.931374, 2)
+save_window_.addexpr("somaA.ca_ca_soma[12]( 0.5 )", 1, 1, 0.365868, 0.801394, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,500,-1,1)
+scene_vector_[12] = save_window_
+{save_window_.view(0, -1, 500, 2, 344, 319, 300.6, 200.8)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("somaA.i_ATPase_ca_soma( 0.5 )", 1, 1, 0.8, 0.8, 2)
+save_window_.addvar("somaA.i_Na_Ca_ex_ca_soma( 0.5 )", 1, 1, 0.8, 0.7, 2)
+save_window_.addvar("somaA.I_ca_soma( 0.5 )", 1, 1, 0.8, 0.6, 2)
+}
+objectvar scene_vector_[1]
+{doNotify()}

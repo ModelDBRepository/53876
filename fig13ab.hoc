@@ -1,0 +1,84 @@
+// fig13aB.hoc
+// This file is under development (isn't debuged)
+
+// make sure the nmda receptors are turned on for fig 13a
+// for cell type B
+
+B_nmda_on()	// can only turn off once otherwise forgets prev value
+
+//figure 13 has no K(AHP) current:
+
+somaB g_ahp_save = gbar_ahp
+somaB gbar_ahp = 0
+
+// record voltages, time
+
+objref somaB_V[2], tvec
+
+tstop = 4000
+steps_per_ms=40
+dt = 0.025
+
+steps_per_ms=20
+dt = 0.05
+
+for i=0,1 {
+	somaB_V[i] = new Vector(int(tstop/dt + 1))
+}
+
+tvec = somaB_V.c
+
+// protocol for playing a waveform into the cell
+
+objref bic	// B current clamps
+somaB bic = new IClamp(0.5)
+bic.del = 0
+bic.dur = 1e9
+
+objref somaBcurrent	// this will be played into bic.amp
+
+somaBcurrent = new Vector(int(tstop/dt+2))
+somaBcurrent.fill(0)
+somaBcurrent.play(&bic.amp,dt)	// somaAcurrent will be further modified below
+
+for i = 0, 1 {
+	somaB_V[i].record(&somaB.v(0.5))
+	tvec.record(&t)
+	if (i>0) {
+		somaB_V[i-1].play_remove()
+		tvec.play_remove()	// only needs to be recorded once
+	}
+	somaBcurrent.fill((-0.04-0.025*(i+1)), int(500/dt), int(4000/dt))
+	{init() run()}
+}
+
+objref g13a, g13b
+
+g13a=new Graph()
+g13a.exec_menu("Keep Lines")
+
+g13b=new Graph()
+g13b.exec_menu("Keep Lines")
+
+somaB_V[0].line(g13a,dt, 1, 1)
+somaBcurrent.fill(-0.04, int(500/dt), int(4000/dt))
+somaBcurrent.c.mul(100).sub(100).line(g13a, dt, 1, 1)
+
+somaB_V[1].line(g13b,dt, 1, 1)
+somaBcurrent.fill(-0.065, int(500/dt), int(4000/dt))
+somaBcurrent.c.mul(100).sub(100).line(g13b, dt, 1, 1)
+
+g13a.exec_menu("View = plot")
+g13a.label(.4,.3,"FIG 13A")
+g13b.exec_menu("View = plot")
+g13b.label(.4,.3,"FIG 13B")
+
+// turn off current clamp
+
+bic.amp=0
+somaBcurrent.play_remove()
+
+B_nmda_off() // turn B's nmda off
+
+// restore the K(AHP) current
+somaB gbar_ahp = g_ahp_save

@@ -1,0 +1,19 @@
+// fig3.hoc
+
+// see the graphs with mosinit.hoc for now
+
+if ( (dendA[3].gbar_nmda(0.5)>0) || (dendB[3].gbar_nmda(0.5) > 0 )) {
+	nmda_off()	// can only turn off once otherwise forgets prev value
+}
+
+tstop = 60
+objref vbox3
+
+vbox3 = new VBox()
+vbox3.intercept(1)
+
+	load_file(1,"fig3.ses")
+vbox3.intercept(0)
+vbox3.map("Fig. 3.", 380, 1, 383.04, 741.12)
+
+{init() run()}

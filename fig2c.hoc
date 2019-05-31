@@ -1,0 +1,43 @@
+// fig2c.hoc
+
+// make sure the nmda receptors are turned off for fig 2
+// for cell types A and B
+
+if ( (dendA[3].gbar_nmda(0.5)>0) || (dendB[3].gbar_nmda(0.5) > 0 )) {
+	nmda_off()	// can only turn off once otherwise forgets prev value
+}
+
+// record voltages, time
+
+objref somaA_V, somaB_V, tvec
+
+tstop = 50
+
+somaA_V = new Vector(tstop/dt +1)
+somaB_V = somaA_V.c
+tvec = somaA_V.c
+
+somaA_V.record(&somaA.v(0.5))
+somaB_V.record(&somaB.v(0.5))
+
+tvec.record(&t)
+
+init()
+run()
+
+objref g2c
+
+g2c=new Graph()
+
+deltat=int(1.5/dt)
+astart =1838
+aend = astart+deltat
+bstart = 1825
+bend = bstart+deltat
+
+somaA_V.c(astart,aend).line(g2c,dt, 1, 1)
+somaB_V.c(bstart,bend).line(g2c,dt, 1, 1)
+
+g2c.exec_menu("Keep Lines")
+g2c.exec_menu("View = plot")
+g2c.label(.2,.925,"FIG 2 C")

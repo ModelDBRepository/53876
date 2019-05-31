@@ -1,0 +1,22 @@
+// For some reason (probably overwritting by other mechanisms) the below
+// commented out attempt at verification of i_ahp did not work:
+// print " Diagnostic print will hopefully print 0.0059 and 0.86 approximately below:"
+// {somaA cai=5e-5 init() print somaA.q_ahp(0.5)}
+// should print 0.0058774139, a not activated conductance at 50 nM
+// {somaA cai=5e-4 init() print somaA.q_ahp(0.5)}
+// should print 0.85532747, becomes an almost fully activated conductance at 500 nM
+// see Quadroni PhD thesis comment on top of p50 for more details.
+
+// The below method however does work for showing that i_ahp is responding correctly
+// to 50 and 500 nM [Ca]i (cai) by activating and inactivating
+
+objref ca_vec, g
+load_file("q_ahp_graph.ses")
+// above will display activation variable that is part of i_ahp
+ca_vec = new Vector(tstop/dt + 1)
+ca_vec.fill(5e-4)
+ca_vec.fill(5e-5, int(tstop/(4*dt)),int(tstop/dt))
+
+ca_vec.play(&somaA.cai(0.5),dt)
+init()
+run()

@@ -1,0 +1,75 @@
+// fig4a.hoc
+
+// make sure the nmda receptors are turned off for fig 4
+// for cell types A and B
+
+if ( (dendA[3].gbar_nmda(0.5)>0) || (dendB[3].gbar_nmda(0.5) > 0 )) {
+	nmda_off()	// can only turn off once otherwise forgets prev value
+}
+
+// record voltages, time
+
+objref somaA_V[6], tvec
+
+tstop =800
+steps_per_ms=40
+dt = 0.025
+
+steps_per_ms=10
+dt = 0.1
+
+for i=0,5 {
+	somaA_V[i] = new Vector(int(tstop/dt +2))
+}
+
+tvec = somaA_V.c
+
+
+// protocol for playing a waveform into the cell
+
+objref aic	// A current clamps
+somaA aic = new IClamp(0.5)
+aic.del = 0
+aic.dur = 1e9
+
+objref somaAcurrent	// this will be played into aic.amp
+
+somaAcurrent = new Vector(int(tstop/dt+2))
+somaAcurrent.fill(0)
+somaAcurrent.play(&aic.amp,dt)	// somaAcurrent will be further modified below
+
+
+for i = 0, 5 {
+
+	somaA_V[i].record(&somaA.v(0.5))
+
+	tvec.record(&t)
+
+	if (i>0) { 
+		somaA_V[i-1].play_remove()
+		tvec.play_remove()	// only needs to be recorded once
+	}
+
+	somaAcurrent.fill((-0.1*(i+1)), int(150/dt), int(650/dt))
+
+	{init() run()}
+}
+
+objref g4a
+
+g4a=new Graph()
+g4a.exec_menu("Keep Lines")
+
+for i = 0, 5 {
+	somaA_V[i].line(g4a,dt, 1, 1)
+	somaAcurrent.fill((-0.1*(i+1)), int(150/dt), int(650/dt))
+	somaAcurrent.c.mul(40).sub(125).line(g4a, dt, 1, 1)
+}
+
+g4a.exec_menu("View = plot")
+g4a.label(.4,.7,"FIG 4A")
+
+// turn off current clamp
+
+aic.amp=0
+somaAcurrent.play_remove()

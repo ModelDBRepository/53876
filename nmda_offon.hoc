@@ -1,0 +1,35 @@
+// nmda_offon.hoc
+// procedures to turn nmda conductances off and on
+
+// if nmda receptors are on this is the value used everywhere:
+
+gbar_nmda_const = 0.002570 // S/cm2
+
+proc A_nmda_off() {
+	forsec A_prox_sects {gbar_nmda=0}
+	forsec A_dist_sects {gbar_nmda=0}
+}
+
+proc A_nmda_on() {
+	forsec A_prox_sects {gbar_nmda=gbar_nmda_const}
+	forsec A_dist_sects {gbar_nmda=gbar_nmda_const}
+}
+
+proc B_nmda_off() {
+	forsec B_prox_sects {gbar_nmda=0}
+	forsec B_dist_sects {gbar_nmda=0}
+}
+
+proc B_nmda_on() {
+	forsec B_prox_sects {gbar_nmda=gbar_nmda_const}
+	forsec B_dist_sects {gbar_nmda=gbar_nmda_const}
+}
+
+proc nmda_off() {
+	A_nmda_off()
+	B_nmda_off()
+}
+proc nmda_on() {
+	A_nmda_on()
+	B_nmda_on()
+}

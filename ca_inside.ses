@@ -1,0 +1,15 @@
+objectvar save_window_, rvp_
+objectvar scene_vector_[11]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,100,0,1)
+scene_vector_[10] = save_window_
+{save_window_.view(0, 0, 100, 1, 88, 75, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("somaA.cai( 0.5 )", 1, 1, 0.569968, 0.976677, 2)
+}
+objectvar scene_vector_[1]
+{doNotify()}

@@ -1,0 +1,87 @@
+// fig2a2b2.hoc
+
+// make sure the nmda receptors are turned off for fig 2
+// for cell types A and B
+
+if ( (dendA[3].gbar_nmda(0.5)>0) || (dendB[3].gbar_nmda(0.5) > 0 )) {
+	nmda_off()	// can only turn off once otherwise forgets prev value
+}
+
+// record voltages, time
+
+objref somaA_V, somaB_V, tvec
+
+tstop =250
+steps_per_ms=40
+dt = 0.025
+
+//steps_per_ms=10
+//dt = 0.1
+
+somaA_V = new Vector(tstop/dt +1)
+somaB_V = somaA_V.c
+tvec = somaA_V.c
+
+somaA_V.record(&somaA.v(0.5))
+somaB_V.record(&somaB.v(0.5))
+
+tvec.record(&t)
+
+objref aic, bic	// A and B current clamps
+
+// protocol for playing a waveform into the cell
+
+somaA aic = new IClamp(0.5)
+aic.del = 0
+aic.dur = 1e9
+
+somaB bic = new IClamp(0.5)
+bic.del = 0
+bic.dur = 1e9
+
+objref somaAcurrent, somaBcurrent
+
+somaAcurrent = new Vector(tstop/dt+1)
+somaBcurrent = new Vector(tstop/dt+1)
+
+somaAcurrent.fill(-0.04)
+somaBcurrent.fill(-0.16)
+
+somaAcurrent.fill((-0.04+0.09), int(125/dt), int(225/dt))
+somaBcurrent.fill((-0.16+0.09), int(125/dt), int(225/dt))
+
+somaAcurrent.play(&aic.amp,dt)
+somaBcurrent.play(&bic.amp,dt)
+
+{init() run()}
+
+objref g2a2,g2b2, hbox2a2b2
+
+hbox2a2b2 = new HBox()
+hbox2a2b2.intercept(1)
+
+	g2a2=new Graph()
+
+	somaA_V.line(g2a2,dt, 1, 1)
+	g2a2.exec_menu("Keep Lines")
+	somaAcurrent.c.mul(1e2).sub(100).line(g2a2, dt, 1, 1)
+	g2a2.exec_menu("View = plot")
+	g2a2.label(.2,.6,"FIG 2 A2")
+	g2b2=new Graph()
+
+	somaB_V.line(g2b2, dt, 1, 1)
+	g2b2.exec_menu("Keep Lines")
+	somaBcurrent.c.mul(1e2).sub(100).line(g2b2, dt, 1, 1)
+	g2b2.exec_menu("View = plot")
+	g2b2.label(.2,.6,"FIG 2 B2")
+
+hbox2a2b2.intercept(0)
+hbox2a2b2.map()
+
+// turn off current clamp
+
+aic.amp=0
+bic.amp=0
+
+somaAcurrent.play_remove()
+somaBcurrent.play_remove()

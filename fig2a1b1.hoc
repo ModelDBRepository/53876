@@ -1,0 +1,47 @@
+// fig2a1b1.hoc
+
+// make sure the nmda receptors are turned off for fig 2
+// for cell types A and B
+
+if ( (dendA[3].gbar_nmda(0.5)>0) || (dendB[3].gbar_nmda(0.5) > 0 )) {
+	nmda_off()	// can only turn off once otherwise forgets prev value
+}
+
+// record voltages, time
+
+objref somaA_V, somaB_V, tvec
+
+tstop = 750
+
+somaA_V = new Vector(tstop/dt +1)
+somaB_V = somaA_V.c
+tvec = somaA_V.c
+
+somaA_V.record(&somaA.v(0.5))
+somaB_V.record(&somaB.v(0.5))
+
+tvec.record(&t)
+
+init()
+run()
+
+objref g2a1,g2b1, hbox2a1b1
+
+hbox2a1b1 = new HBox()
+hbox2a1b1.intercept(1)
+
+	g2a1=new Graph()
+
+	somaA_V.line(g2a1,dt, 1, 1)
+	g2a1.exec_menu("Keep Lines")
+	g2a1.exec_menu("View = plot")
+	g2a1.label(.2,.925,"FIG 2 A1")
+	g2b1=new Graph()
+
+	somaB_V.line(g2b1, dt, 1, 1)
+	g2b1.exec_menu("Keep Lines")
+	g2b1.exec_menu("View = plot")
+	g2b1.label(.2,.925,"FIG 2 B1")
+
+hbox2a1b1.intercept(0)
+hbox2a1b1.map()

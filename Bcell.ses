@@ -1,0 +1,425 @@
+//Begin CellBuild[1]
+{
+load_file("celbild.hoc", "CellBuild")
+}
+{ocbox_ = new CellBuild(1)}
+{object_push(ocbox_)}
+{
+version(5.7)
+continuous = 1
+}
+{object_push(topol)}
+{
+first = 0
+slist.remove_all()
+sname = "dendB"
+objref tobj
+}
+{
+tobj = new CellBuildSection("somaB",0, 0, tobj, 0) slist.append(tobj)
+  tobj.position(0,0,15,0) tobj.lx=-5.05674 tobj.ly=40.5446 tobj.i3d=0
+tobj = new CellBuildSection("dendB",0, 0, tobj, 0) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(0,0,-105,0) tobj.lx=-56.402 tobj.ly=15.6499 tobj.i3d=0
+tobj = new CellBuildSection("dendB",1, 0, tobj, 0) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(0,0,-60,-45) tobj.lx=-71.9611 tobj.ly=-15.4684 tobj.i3d=0
+tobj = new CellBuildSection("dendB",2, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(15,0,45,-60) tobj.lx=1.16694 tobj.ly=-43.4748 tobj.i3d=0
+tobj = new CellBuildSection("dendB",3, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(0)
+  tobj.position(15,0,90,0) tobj.lx=60.2917 tobj.ly=20.3177 tobj.i3d=0
+tobj = new CellBuildSection("dendB",4, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(1)
+  tobj.position(-105,0,-165,15) tobj.lx=-149.757 tobj.ly=40.5446 tobj.i3d=0
+tobj = new CellBuildSection("dendB",5, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(1)
+  tobj.position(-105,0,-165,-30) tobj.lx=-185.543 tobj.ly=-1.46512 tobj.i3d=0
+tobj = new CellBuildSection("dendB",6, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(2)
+  tobj.position(-60,-45,-120,-60) tobj.lx=-166.872 tobj.ly=-68.3695 tobj.i3d=0
+tobj = new CellBuildSection("dendB",7, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(2)
+  tobj.position(-60,-45,-45,-90) tobj.lx=-68.8493 tobj.ly=-104.156 tobj.i3d=0
+tobj = new CellBuildSection("dendB",8, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(3)
+  tobj.position(45,-60,30,-105) tobj.lx=30.7293 tobj.ly=-122.827 tobj.i3d=0
+tobj = new CellBuildSection("dendB",9, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(3)
+  tobj.position(45,-60,105,-75) tobj.lx=139.643 tobj.ly=-96.376 tobj.i3d=0
+tobj = new CellBuildSection("dendB",10, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(4)
+  tobj.position(90,0,120,-45) tobj.lx=161.426 tobj.ly=-51.2544 tobj.i3d=0
+tobj = new CellBuildSection("dendB",11, 0, tobj, 1) slist.append(tobj)
+tobj.parent=slist.object(4)
+  tobj.position(90,0,150,15) tobj.lx=197.212 tobj.ly=42.1005 tobj.i3d=0
+all_init()
+}
+for i=0, slist.count-1 {slist.object(i).rdses()}
+{object_pop()}
+{
+}
+{object_push(subsets)}
+{first = 0}
+{ tobj = snlist.object(0)}
+{tobj = new SNList("soma") snlist.append(tobj)}
+for i=0,0 tobj.add(bild.topol.slist.object(fscan()))
+0
+{tobj = new SNList("alldendrites") snlist.append(tobj)}
+for i=0,11 tobj.add(bild.topol.slist.object(fscan()))
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+{tobj = new SNList("proximalB") snlist.append(tobj)}
+for i=0,3 tobj.add(bild.topol.slist.object(fscan()))
+1
+2
+3
+4
+{tobj = new SNList("distalB") snlist.append(tobj)}
+for i=0,7 tobj.add(bild.topol.slist.object(fscan()))
+5
+6
+7
+8
+9
+10
+11
+12
+{consist()}
+{object_pop()}
+{
+}
+{object_push(geom)}
+{
+first = 0
+tobj = new GeoSpec(2)
+tobj.value = 99
+bild.subsets.snlist.object(3).geo.append(tobj)
+tobj = new GeoSpec(3)
+tobj.value = 3
+bild.subsets.snlist.object(3).geo.append(tobj)
+tobj = new GeoSpec(6)
+tobj.value = 3
+bild.subsets.snlist.object(3).geo.append(tobj)
+tobj = new GeoSpec(2)
+tobj.value = 198
+bild.subsets.snlist.object(4).geo.append(tobj)
+tobj = new GeoSpec(3)
+tobj.value = 1
+bild.subsets.snlist.object(4).geo.append(tobj)
+tobj = new GeoSpec(6)
+tobj.value = 6
+bild.subsets.snlist.object(4).geo.append(tobj)
+tobj = new GeoSpec(2)
+tobj.value = 31
+bild.topol.slist.object(0).geo.append(tobj)
+tobj = new GeoSpec(3)
+tobj.value = 31
+bild.topol.slist.object(0).geo.append(tobj)
+tobj = new GeoSpec(6)
+tobj.value = 1
+bild.topol.slist.object(0).geo.append(tobj)
+set_default()
+}
+{object_pop()}
+{
+}
+{object_push(memb)}
+{first=0}
+{
+tobj = new FakeMechStan(0)
+tobj.value = 150
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new FakeMechStan(1)
+tobj.value = 1
+tobj.set_default()
+tobj = new MStanWrap(tobj, 0)
+bild.subsets.snlist.object(0).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("ahp")
+tobj.set("gbar_ahp", 0.002716, 0)
+tobj.set("Erev_ahp", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("nap")
+tobj.set("gbar_nap", 2.36e-05, 0)
+tobj.set("Erev_nap", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("na")
+tobj.set("gbar_na", 0.043, 0)
+tobj.set("Erev_na", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("naleak")
+tobj.set("g_naleak", 3.78e-05, 0)
+tobj.set("Erev_naleak", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("lva")
+tobj.set("gbar_lva", 0.000166, 0)
+tobj.set("Erev_lva", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("kslow")
+tobj.set("gbar_kslow", 0.000519, 0)
+tobj.set("Erev_kslow", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("kleak")
+tobj.set("g_kleak", 0.000166, 0)
+tobj.set("Erev_kleak", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hva")
+tobj.set("gbar_hva", 0.002385, 0)
+tobj.set("Erev_hva", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("h")
+tobj.set("gbar_h", 6.6e-05, 0)
+tobj.set("Erev_h", -46, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("clleak")
+tobj.set("g_clleak", 7.46e-05, 0)
+tobj.set("Erev_clleak", -70, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("caleak")
+tobj.set("g_caleak", 1.66e-06, 0)
+tobj.set("Erev_caleak", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("bkfast")
+tobj.set("gbar_bkfast", 0.03753, 0)
+tobj.set("Erev_bkfast", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("a")
+tobj.set("gbar_a", 0.000755, 0)
+tobj.set("Erev_a", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("ca_soma")
+tobj.set("B_ca_soma", 0.025, 0)
+tobj.set("K2f_ex_ca_soma", 1.32e-12*2*FARADAY, 0)
+tobj.set("K2f_ATPase_ca_soma", 3.97e-09*2*FARADAY, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(1).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("nmda")
+tobj.set("gbar_nmda", 0.00257, 0)
+tobj.set("Erev_nmda", 0, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(2).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("nap")
+tobj.set("gbar_nap", 3.8e-05, 0)
+tobj.set("Erev_nap", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("na")
+tobj.set("gbar_na", 0.00288, 0)
+tobj.set("Erev_na", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("naleak")
+tobj.set("g_naleak", 7e-07, 0)
+tobj.set("Erev_naleak", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("lva")
+tobj.set("gbar_lva", 0.000651, 0)
+tobj.set("Erev_lva", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("kslow")
+tobj.set("gbar_kslow", 0.000406, 0)
+tobj.set("Erev_kslow", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("kleak")
+tobj.set("g_kleak", 3.69e-06, 0)
+tobj.set("Erev_kleak", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hva")
+tobj.set("gbar_hva", 0.001417, 0)
+tobj.set("Erev_hva", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("h")
+tobj.set("gbar_h", 6.6e-05, 0)
+tobj.set("Erev_h", -46, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("clleak")
+tobj.set("g_clleak", 1e-06, 0)
+tobj.set("Erev_clleak", -70, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("caleak")
+tobj.set("g_caleak", 6.5e-08, 0)
+tobj.set("Erev_caleak", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("bkfast")
+tobj.set("gbar_bkfast", 0.002572, 0)
+tobj.set("Erev_bkfast", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("ca_prox")
+tobj.set("B_ca_prox", 0.025, 0)
+tobj.set("K2f_ex_ca_prox", 2.14e-12*2*FARADAY, 0)
+tobj.set("K2f_ATPase_ca_prox", 1.6e-09*2*FARADAY, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(3).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("bkfast")
+tobj.set("gbar_bkfast", 0.00064, 0)
+tobj.set("Erev_bkfast", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("hva")
+tobj.set("gbar_hva", 0.00035, 0)
+tobj.set("Erev_hva", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("lva")
+tobj.set("gbar_lva", 5e-05, 0)
+tobj.set("Erev_lva", 80, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("clleak")
+tobj.set("g_clleak", 1e-06, 0)
+tobj.set("Erev_clleak", -70, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("kleak")
+tobj.set("g_kleak", 3.68e-06, 0)
+tobj.set("Erev_kleak", -82, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("naleak")
+tobj.set("g_naleak", 7.1e-07, 0)
+tobj.set("Erev_naleak", 50, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{
+tobj = new MechanismStandard("ca_dist")
+tobj.set("B_ca_dist", 0.025, 0)
+tobj.set("K2f_ex_ca_dist", 3.2e-12*2*FARADAY, 0)
+tobj.set("K2f_ATPase_ca_dist", 1.55e-10*2*FARADAY, 0)
+tobj = new MStanWrap(tobj, 1)
+bild.subsets.snlist.object(4).ml.append(tobj)
+}
+{object_pop()}
+{
+}
+{object_push(manage)}
+{
+first = 0
+classname = "Cell"
+etop=1 esub=1 egeom=1 emem=1
+itop=1 isub=0 igeom=0 imem=0
+bild.topol.names_off = 0
+bild.topol.circles_off = 0
+output_index = 0  output_x = 1
+}
+{object_pop()}
+{
+cexport()
+}
+{object_pop()}
+{
+save_window_=ocbox_.gtopol
+save_window_.size(-200,200,-150,150)
+scene_vector_[3] = save_window_
+ocbox_.gtopol = save_window_
+save_window_.save_name("ocbox_.gtopol")
+}
+{
+ocbox_.map("CellBuild[1]", 284, 92, 883.2, 678.72)
+}
+objref ocbox_
+//End CellBuild[1]
+

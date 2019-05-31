@@ -1,0 +1,41 @@
+This document records measurements from the figures in the paper
+Quadroni and Knopfel 1994 and the current
+state of the model implemented by Tom Morse
+
+fig 3a		PAPER		MODEL
+graph scale bars
+
+b=20(mV)/21.5(mm)
+c=2ms/30mm
+d=100nM/11mm
+
+Peak to trough
+AP height	84.5mm*(b)=78.6 76.33
+AP width	9*c=0.6 ms		.65 ms
+
+[Ca]i height	71*d=645nM	611.9e-6 mM= 611.9 nM
+[Ca]i width	10*d= 0.67 ms	0.76 ms
+
+fig3b
+f=5nA/21.5mm
+
+IKfast height	30*f=6.98 nA	0.250 mA/cm2
+INa height	50*f=11.627 nA	-0.414 mA/cm2
+ratios		30/50=0.6	250/414=0.604
+
+fig3C
+g=0.5nA/30.5mm
+IKAHP height	14.5*g=0.2377	0.0186 mA/cm2 + shape of current is not right
+IKA height	10.5*g=0.17213	0.01847 mA/cm2
+ICaHVA height	32*g = 0.52459	-0.01663 mA/cm2
+KA/CaHVA ratios:
+		0.17213/0.5249=0.3279
+		0.01847/0.01663=1.111
+fig4D
+j=0.1nA/32mm
+IKslow height	19*j=0.059375	0.001314 mA/cm2
+Ih delta	2.5*j=0.0078125	303.6 nA/cm2
+INaP delta	18*j=0.05625	 0.00184332 mA/cm2
+
+ratios
+IKslow/NaP	0.059375/0.05625 0.001314/0.00184332

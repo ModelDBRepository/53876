@@ -1,0 +1,9 @@
+load_file("nrngui.hoc")
+load_file("SomaAcell.ses")
+access somaA
+
+load_file("section_lists_A.hoc")
+load_file("variousGraphsA.ses")
+load_file("A_nmda_offon.hoc")
+A_nmda_off()
+tstop=500

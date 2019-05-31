@@ -1,0 +1,46 @@
+objectvar save_window_, rvp_
+objectvar scene_vector_[9]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,50,-0.511583,0.352584)
+scene_vector_[5] = save_window_
+{save_window_.view(0, -0.511583, 50, 0.864167, 417, 151, 347.52, 267.52)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("dendB[1].i_na( 0.166667 )", 2, 1, 0.260064, 0.18115, 2)
+save_window_.addexpr("dendB[1].i_bkfast( 0.166667 )", 3, 1, 0.141853, 1.00543, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,50,-80,40)
+scene_vector_[8] = save_window_
+{save_window_.view(0, -80, 50, 120, 791, 2, 300.48, 200.32)}
+graphList[0].append(save_window_)
+save_window_.save_name("graphList[0].")
+save_window_.addvar("dendB[1].v( 0.166667 )", 1, 1, 0.563578, 0.9623, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(35.0867,52.4534,-0.00244658,0.00382759)
+scene_vector_[7] = save_window_
+{save_window_.view(35.0867, -0.00244658, 17.3667, 0.00627417, 335, 467, 344.64, 283.84)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("dendB[1].i_kslow( 0.166667 )", 2, 1, 0.221725, 0.947923, 2)
+save_window_.addvar("dendB[1].i_h( 0.166667 )", 3, 1, 0.493291, 0.938339, 2)
+save_window_.addvar("dendB[1].i_nap( 0.166667 )", 7, 1, 0.566773, 0.861661, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(36.7775,51.4525,-0.0140475,0.0105775)
+scene_vector_[6] = save_window_
+{save_window_.view(36.7775, -0.0140475, 14.675, 0.024625, 371, 675, 375.36, 277.12)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("dendB[1].i_na( 0.166667 )", 5, 1, 0.583227, 0.765671, 2)
+save_window_.addvar("dendB[1].i_hva( 0.166667 )", 3, 1, 0.303338, 0.334091, 2)
+}
+objectvar scene_vector_[1]
+{doNotify()}

@@ -1,0 +1,7 @@
+print " Diagnostic print will hopefully print 0.0059 and 0.86 approximately below:"
+{soma cai=5e-5 init() print soma.q_ahp(0.5)}
+// should print 0.0058774139, a not activated conductance at 50 nM
+{soma cai=5e-4 init() print soma.q_ahp(0.5)}
+// should print 0.85532747, becomes an almost fully activated conductance at 500 nM
+// see Quadroni PhD thesis comment on top of p50 for more details.
+
