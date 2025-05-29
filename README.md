@@ -33,8 +33,7 @@ Note that in the ca_X.mod files the K_ are converted into K2f_'s from the paper 
 
 For questions about the paper please contact Thomas Knopfel, for questions about the model code, Tom Morse.
 
+## Changelog
 20070912 Updated with extra dummy current in ca_*.mod files to synchronize calculation of conductances with the currents. Thanks to Stephen Larson for the bug report and Michael Hines for the fix.
 
----
-
-2025-05-27 – Standardized to Markdown.
+20250527 Standardized to Markdown.
